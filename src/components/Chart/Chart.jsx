@@ -12,7 +12,7 @@ const Chart = () => {
     setDailyData(dailyData);
   };
 
-  useEffect(() => fetchData());
+  useEffect(() => fetchData(), []);
 
   const lineChart = !!dailyData.length ? (
     <Line
