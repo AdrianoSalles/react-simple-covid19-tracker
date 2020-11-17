@@ -10,3 +10,19 @@ export const fetchData = async () => {
     return { confirmed, recovered, deaths, lastUpdate };
   } catch (error) {}
 };
+
+export const fetchDailyData = async () => {
+  try {
+    const { data } = await axios.get(config.daily);
+    const formatedData = data.map(
+      ({ positive, recovered, death, dateChecked: date }) => ({
+        confirmed: positive,
+        recovered,
+        deaths: death,
+        date,
+      })
+    );
+
+    return formatedData;
+  } catch (error) {}
+};
